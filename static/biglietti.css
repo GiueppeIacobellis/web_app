@@ -1,0 +1,155 @@
+div h5,p{
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    color: white !important;
+}
+
+h5{
+    font-weight: bolder !important;
+
+}
+
+#box-main{
+    /*box main contiene: 
+    1) grid system (le card)
+    2) il footer
+    */
+
+    width: 100vw;
+    margin: 0px;
+    
+    position: absolute;
+
+    top: 300px;
+}
+
+
+/*biglietto singolo*/
+
+#biglietto{
+    margin-top: 0px;
+    margin-bottom: 50px;
+    box-sizing: border-box !important;
+
+    position: relative;
+    width: 35% !important;
+    height: 25% !important;
+    left: 32.5%;
+}
+.btn-blue {
+    background-color: skyblue !important;
+    color: black !important;
+    border: none !important;
+  }
+
+.btn-blue:hover {
+    background-color: skyblue !important;
+    color: white !important;
+  }
+
+select{
+    /*colore del testo del giorno selezionato*/
+    color: black;
+}
+
+.oro{
+    display:none;
+}
+
+label{
+    font-weight: bolder;
+}
+
+option{
+    /* colore del testo delle opzioni*/
+    color: black;
+}
+
+
+/*biglietto singolo */
+
+/*biglietti (alcuni campi sono valido sia per biglietti.html
+che per biglietto.html */
+
+.custom-card-bg {
+    background-image: linear-gradient(to bottom right,black,#0d1b2a);
+    color: white;
+}
+
+
+#cards-grid{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr)) !important;
+    gap: 1rem;
+    row-gap: 0.5rem !important;
+ 
+
+    margin-top: 5px;
+    margin-bottom: 0px;
+    padding-bottom: 0px !important;
+    box-sizing: border-box !important;
+
+    position: relative;
+    width: 95vw !important;
+    height: max-content !important;
+    left: 2.5%;
+    height: max-content;
+}
+
+.grid-element{
+    /* Div a cui si riferisce il grid system ( #cards-grid ) sono quelli con class="grid-element".
+    grid element serve a far in modo che i pulsati blu sul fondo della card non vadano a sovrapporsi
+    ad altri elementi
+    */
+    box-sizing: border-box;
+    max-height: 1000px;
+    max-width: 500px;
+
+    margin: 0px;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+
+.bottone{
+    margin-top: 5px;
+    height: 50px;
+    margin-bottom: 1px;
+}
+
+.corpo{
+    min-height: 200px;
+    max-height: 200px;
+}
+
+.card-text{
+    min-height: 50%;
+    max-height: 50%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/*biglietti */
+
+
+img{
+    /*con position: relativetutte le img hanno 
+    lo stesso spazio dal bordo sup della card
+    */
+    border-radius: 5px;
+    position: relative;
+    top: 0%;
+    height: 50% ;
+}
+
+#footer{
+  box-sizing: border-box;
+  border-radius: 30px;
+  background-image: linear-gradient(to bottom right,black,#0d1b2a);
+
+  position:relative;
+  margin-top: 0%;
+  width: 95%;
+  left: 2.5%;
+}

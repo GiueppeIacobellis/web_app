@@ -1,0 +1,99 @@
+*{
+    color: aliceblue;
+}
+
+.modulo div{
+    justify-content: center;
+    align-content: center;
+}
+
+#sfondo {
+    box-sizing: border-box;
+    width: 100vw;
+    height:100vh;
+    background-image: url("/static/images/background_ver7.png");
+    background-size:cover;
+    background-repeat:repeat;
+    background-position: center;
+    position: fixed;
+    margin-top: 0px;
+    top:0px;
+    z-index: -5;
+}
+
+#login_box{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    width: 80vw;
+    height: 70vh;
+
+    position: fixed;
+    top: 15vh;
+    left: 10vw;
+
+    justify-items: center;
+    align-items: center;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 15px 0px #0d1b2a inset;
+    transition: background-image 0.5 ease;
+}
+
+#login_box:hover{    
+    box-shadow: 1px 1px 2px 0px ghostwhite;
+}
+
+#form_grid{
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    justify-items: center;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 2px 0px ghostwhite;
+    padding: 2%;
+    background-image: linear-gradient(to bottom right,black,#0d1b2a);   
+    gap: 1rem;
+}
+
+input{
+    color: #0d1b2a;
+
+    border-radius: 1rem;
+    
+    text-align: center;
+    justify-self: center;
+}
+label{
+    color: orange;
+}
+
+div:has(input){
+    align-self: center;
+    justify-self: center;
+}
+
+.btn-orange {
+    background-color: #ff7f00 !important;
+    color: black !important;
+    border: none !important;
+  }
+
+  .btn-orange:hover {
+    background-color: #e66900 !important;
+    color: white !important;
+  }
+
+select,option,select{
+    border-radius: 5px;
+    text-align: center;
+    color: #0d1b2a;
+}
+
+
+#iscrizione-link{
+    grid-column: 1/-1;
+    justify-items: center;
+    align-items: center;
+}

@@ -1,0 +1,345 @@
+*{
+  color: white;
+  margin: 0px;
+  
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+
+body{
+  padding-bottom: 100px;
+}
+
+.descrizione{
+  font-style: italic;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0.5px 0.5px 0.5px 0px whitesmoke;
+  box-sizing: border-box;
+
+  padding: 20px !important;
+  margin-left: 0px;
+  margin-right: 0px;
+
+  width: 90%;
+
+  position: relative;
+  left: 5%;
+
+
+  margin-bottom: 15px !important;
+}
+
+h5,h4{
+  font-weight: bolder !important;
+}
+
+#info{
+
+  padding: 20px !important;
+
+  height: fit-content !important;
+  border-radius: 5px;
+
+  box-shadow: 1px 1px 1px 0px ghostwhite;
+  box-sizing: border-box;
+
+  background-color: transparent;
+  backdrop-filter: blur(5px); /* sfoca ciò che c'è dietro */
+
+
+}
+#info:hover{
+  transition:  0.7s ease;
+  backdrop-filter: blur(10px)
+}
+
+#info p,h4{
+  padding: 5px;
+  margin: 10px;
+}
+
+#info hr{
+  width: 90%;
+  position: relative;
+  left: 10px;
+}
+
+#info p{
+  font-weight: bold;
+  margin: 15px;
+}
+
+
+#sfondo {
+    box-sizing: border-box;
+    width: 100vw;
+    height:100vh;
+    background-image: url("/static/images/background_ver7.png");
+    background-size:cover;
+    background-repeat:repeat;
+    background-position: center;
+    position: fixed;
+    margin-top: 0px;
+    top:0px;
+    z-index: -5;
+}
+
+#header{
+    display:grid;
+    grid-template-rows: 1;
+    grid-template-columns: repeat(3,minmax(100px,1fr));
+    gap: 50px;
+
+    align-items: center;
+    justify-items: center;
+    background-image: linear-gradient(to bottom right,black,#0d1b2a);
+    
+    position: absolute;
+    left: 2.5vw;
+    top: 10px;
+
+    width: 95vw;
+    height: 130px;
+  
+    border-radius: 15px;
+    box-shadow: 1px 1px 2px 0px ghostwhite;
+
+    margin: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: 10px !important;
+    padding: 0px !important;
+}
+
+#header div {
+  box-sizing: content-box;
+
+  padding: 0px;
+
+  background-color: transparent;
+
+  align-items: center;
+  justify-items: center;
+
+}
+
+
+#titolo{
+  font-family: "Shadows Into Light", !important;
+
+  text-align: center;
+
+  font-weight: bold;
+  font-size:  clamp(27px, 4vw, 45px) !important;
+
+  justify-content: center;
+  align-content: center;
+}
+
+#boxLogo{
+  display: block;
+  box-sizing: border-box;
+  height: 110px !important;
+  width: 110px !important;
+
+  justify-self: left;
+  align-self: center;
+
+  margin-left: 10%;
+}
+
+#logo{
+  height: 100%;
+  align-self: center !important;
+  border-radius: 15px;
+}
+
+
+#login{
+  justify-self: right;
+  margin-right: 10%;
+
+}
+
+/* navbar */
+.navbar-custom {
+    background-color: #0d1b2a !important; /* Blu scuro */
+    background-image: linear-gradient(to bottom right,black,#0d1b2a);
+    border-radius: 10px;
+  }
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #ff7f00 !important; /* Arancione */
+  }
+
+.navbar-custom .nav-link:hover {
+    color: #ffffff !important ;
+  }
+
+.navbar-custom .navbar-toggler {
+    border-color: #ff7f00 !important;
+  }
+
+.navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='orange' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+  }
+
+#header div .btn-orange {
+
+  margin-top: 2px;
+  margin-bottom: 2px;
+
+  font-size: 120% !important;
+
+  background-color: #ff7f00 !important;
+  color: black !important;
+  border: none !important;
+}
+
+nav div .btn-orange {
+
+  margin-top: 2px;
+  margin-bottom: 2px;
+
+  font-size: 120% !important;
+
+  background-color: #ff7f00 !important;
+  color: black !important;
+  border: none !important;
+}
+
+.btn-orange{
+  max-height: 40px;
+}
+
+.btn-orange:hover {
+    background-color: #e66900 !important;
+    color: white !important;
+  }
+
+#navigazione{
+  box-sizing: border-box;
+  margin: 0px;
+  margin-left: 0px;
+
+  max-height: 300px;
+
+  position: absolute;
+  z-index: 5;
+  top: 160px;
+  left: 2vw;
+  z-index: 5;
+
+  width: 95vw;
+}
+/* navbar */
+
+/* messagio di errore di errore dinamico */
+
+#errore{
+  border-radius: 5px;
+  box-sizing: border-box;
+
+  box-shadow: 1px 1px 1px 0px whitesmoke;
+
+  text-align: center;
+
+  position: relative;
+  box-sizing: content-box;
+
+  position: relative;
+  width: 80%;
+  left: 10%;
+  height: 80px;
+
+  margin-top: 3%;
+
+  background-color: #e30022 !important;
+}
+
+/* errore */
+
+
+/*contenitore descrizione slider e footer */
+
+#box-main{
+  /*box main contiene: 
+  1) slider 
+  2) il footer
+  */
+
+  width: 95vw !important;
+  height: fit-content;
+
+  margin-left: 0px;
+  margin-right: 0px;
+  margin: 0rem;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 10px;
+  
+  position: absolute;
+  left: 2.5vw !important;
+
+  top: 250px;
+}
+
+#descrizione{
+  position: relative;
+  width: 94%;
+  left: 3%;
+
+  background-image:linear-gradient(to bottom right,black,#0d1b2a) !important;
+  border-radius: 10px;
+
+  margin: 0px;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  padding: 0px;
+
+}
+
+#slider-container{
+  box-sizing: border-box;
+  height: 60%;
+  width: 80%;
+
+  padding: 0px;
+  margin-top: 100px;
+
+  position: relative;
+  left: 10%;
+  z-index: 1;
+}
+
+.carousel-caption{
+  
+  background-color: transparent !important;
+  backdrop-filter: blur(5px) !important; /* sfoca ciò che c'è dietro */
+}
+
+.slider-img{
+  height: 60vh;
+  width: 80%;
+
+  position: relative;
+  left: 10%;
+
+  border-radius: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+#footer{
+  box-sizing: border-box;
+  border-radius: 30px;
+  background-image: linear-gradient(to bottom right,black,#0d1b2a);
+
+  position:relative;
+  margin-top: 6%;
+  width: 95%;
+  left: 2.5%;
+}
+/*contenitore descrizione slider e footer */

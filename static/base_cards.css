@@ -1,0 +1,175 @@
+*{
+  color: white;
+  margin: 0px;
+  
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+
+body{
+  padding-bottom: 100px;
+}
+
+
+#sfondo {
+    box-sizing: border-box;
+    width: 100vw;
+    height:100vh;
+    background-image: url("/static/images/background_ver7.png");
+    background-size:cover;
+    background-repeat:repeat;
+    background-position: center;
+    position: fixed;
+    margin-top: 0px;
+    top:0px;
+    z-index: -5;
+}
+
+#header{
+    display:grid;
+    grid-template-rows: 1;
+    grid-template-columns: repeat(3,minmax(100px,1fr));
+    gap: 50px;
+
+    align-items: center;
+    justify-items: center;
+    background-image: linear-gradient(to bottom right,black,#0d1b2a);
+    
+    position: absolute;
+    left: 2.5vw;
+    top: 10px;
+
+    width: 95vw;
+    height: 130px;
+  
+    border-radius: 15px;
+    box-shadow: 1px 1px 2px 0px ghostwhite;
+
+    margin: 0px;
+    margin-bottom: 10px;
+    padding: 0px;
+}
+
+#header div {
+  box-sizing: content-box;
+
+  padding: 0px;
+
+  background-color: transparent;
+
+  align-items: center;
+  justify-items: center;
+
+}
+
+#titolo{
+  font-family: "Shadows Into Light", !important;
+
+  text-align: center;
+
+  font-weight: bold;
+  font-size:  clamp(27px, 4vw, 45px) !important;
+
+  justify-content: center;
+  align-content: center;
+}
+
+#boxLogo{
+  display: block;
+  box-sizing: border-box;
+  height: 110px !important;
+
+  justify-self: left;
+  align-self: center;
+
+  margin-left: 10%;
+}
+
+#logo{
+  height: 100%;
+  align-self: center !important;
+  border-radius: 15px;
+}
+
+
+#login{
+  justify-self: right;
+  margin-right: 10%;
+
+}
+
+/* navbar */
+.navbar-custom {
+    background-color: #0d1b2a !important; /* Blu scuro */
+    background-image: linear-gradient(to bottom right,black,#0d1b2a);
+    border-radius: 10px;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #ff7f00 !important; /* Arancione */
+}
+
+.navbar-custom .nav-link:hover {
+    color: #ffffff !important ;
+}
+
+.navbar-custom .navbar-toggler {
+    border-color: #ff7f00 !important;
+}
+
+.navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='orange' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+#header div .btn-orange {
+
+  margin-top: 2px;
+  margin-bottom: 2px;
+
+  font-size: 120% !important;
+
+  background-color: #ff7f00 !important;
+  color: black !important;
+  border: none !important;}
+
+nav div .btn-orange {
+
+  margin-top: 2px;
+  margin-bottom: 2px;
+
+  font-size: 120% !important;
+
+  background-color: #ff7f00 !important;
+  color: black !important;
+  border: none !important;
+}
+
+.btn-orange{
+  max-height: 40px;
+  background-color: #ff7f00 !important;
+  color: black !important;
+  border: none !important;
+}
+.btn-orange:hover {
+    background-color: #e66900 !important;
+    color: white !important;
+}
+
+#navigazione{
+  box-sizing: border-box;
+  margin: 0px;
+  margin-left: 0px;
+
+  max-height: 300px;
+
+  position: absolute;
+  z-index: 5;
+  top: 170px;
+  left: 2vw;
+  z-index: 5;
+
+  width: 95vw;
+}
+/* navbar */
+
