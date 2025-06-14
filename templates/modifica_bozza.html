@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Modifica Bozza
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" 
+    href="{{url_for('static',filename = 'base.css')}}">
+    <link rel="stylesheet" 
+    href="{{url_for('static',filename = 'bozza.css')}}">
+{% endblock %}
+
+
+{% block content %}
+
+    <section id="bozza" class="grid-element">
+                <h4>BOZZA</h4>
+                <hr>
+                <div>
+                    <form class="modulo"action="/conferma_modifica" method="post" id="form_grid">
+                        <div>
+                            <label for="nome"> Nome Artista:</label>
+                        </div>
+                        <div>
+                            <select name="nome" id="nome">
+                                {% for nome_artista in p_artisti %}
+                                    {% if nome_artista[0] == p_bozza[0] %}
+                                    <option value="{{nome_artista[0]}}" selected>
+                                        {{nome_artista[0]}}
+                                    </option>
+                                    {% else%}
+                                        <option value="{{nome_artista[0]}}">
+                                        {{nome_artista[0]}}
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="giorno" class="custom-file-label">Scegli una giorno:</label>
+                        </div>
+                        <div>
+                            <select name="giorno" id="giorno">
+                                {% for nome_giorno in p_giorni %}
+                                    {% if nome_giorno[0] == p_bozza[2] %}
+                                        <option value="{{nome_giorno[0]}}" selected>
+                                            {{nome_giorno[0]}}
+                                        </option>
+                                    {% else %}
+                                        <option value="{{nome_giorno[0]}}">
+                                            {{nome_giorno[0]}}
+                                        </option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="palco">Palco:</label>
+                        </div>
+                        <div>
+                            <select name="palco" id="palco">
+                                {% for nome_palco in p_palchi %}
+                                    {% if nome_palco[0] == p_bozza[1] %}
+                                        <option value="{{nome_palco[0]}}" selected>
+                                            {{nome_palco[0]}}
+                                        </option>
+                                    {% else %}
+                                        <option value="{{nome_palco[0]}}">
+                                            {{nome_palco[0]}}
+                                        </option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="ora_inizio">ora inizio:</label>
+                        </div>
+                        <div>
+                            <select name="ora_inizio" id="ora_inizio">
+                                {% for num in range (20,25) %}
+                                    {% if num == p_bozza[3] %}
+                                        <option value="{{num}}" selected>{{num}}</option>
+                                    {% else %}
+                                        <option value="{{num}}">{{num}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="genere">genere:</label>
+                        </div>
+                        <div>
+                            <select name="genere" id="genere">
+                                {% for genere in p_generi %}
+                                    {% if genere == p_bozza[5] %}
+                                        <option value="{{genere}}" selected>{{genere}}</option>
+                                    {% else %}
+                                        <option value="{{genere}}">{{genere}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="status">status:</label>
+                        </div>
+                        <div>
+                            <select name="status" id="status">
+                                <option value="0" selected>Bozza</option>
+                                <option value="1">Attiva</option>
+                            </select>
+                        </div>
+
+
+                        <div>
+                            <label for="id-bozza" hidden>id-bozza:</label>
+                        </div>
+                        <div>
+                            <select name="id-bozza" id="id-bozza" hidden>
+                                <option value="{{p_id_bozza}}" selected>{{p_id_bozza}}</option>
+                            </select>
+                        </div>
+
+                        <hr>
+                        <button type="submit" class="btn btn-lg btn-orange"> Modifica</button>
+                        <button type="reset" class="btn btn-lg btn-orange"> reset</button>
+                    </form>
+                </div>
+    </section>
+
+{% endblock %}

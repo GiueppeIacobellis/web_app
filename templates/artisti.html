@@ -1,0 +1,92 @@
+{% extends "base_cards.html" %}
+
+{% block title %}
+    Artisti
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" 
+    href="{{url_for('static',filename = 'base_cards.css')}}">
+    <link rel="stylesheet" 
+    href="{{url_for('static',filename = 'artisti.css')}}">
+{% endblock %}
+
+{% block content %}
+    <main id="box-main">
+        <!-- cards -->
+        <section id= "cards-grid">
+            {% for artista in p_artisti %}
+                {% if artista[5] == 1 %}
+                <div class="grid-element"card="biglietto custom-card-bg">
+                    <img id ="img-artista" src="{{url_for('static', filename = artista[2] )}}" class="card-img-top" 
+                    alt="img-artista">
+                    <div class="card-body corpo custom-scrollbar">
+                        <h5 class="card-title">
+                            {{artista[1]}}
+                        </h5>
+                        <p class="desc_artista custom-scrollbar">
+                            {{artista[3]}}
+                        </p>
+                        <section class="ifr_buttn">
+                        <iframe src="{{artista[4]}}"  title ="Youtube video "frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> 
+                        </iframe>
+                        {% if current_user.id == 1 %}
+                        <!--admin-->
+                        <div class="bottone">
+                            <a href="{{url_for('delete_artista',id_artista = artista[0] )}}" class="btn btn-danger">{{artista[0]}}</a>
+                        </div> 
+                        {% endif %}
+                        </section>   
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </section>
+        <!-- cards -->
+
+        <!-- footer -->
+        <footer id="footer" class="bg-dark text-white pt-5 pb-4">
+        <div class="container text-md-left">
+            <div class="row text-md-left">
+
+            <!-- Colonna 1: Descrizione -->
+            <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold">Il Tuo Sito</h5>
+                <p>Un esempio di footer responsive usando Bootstrap 5.3.6. Aggiungi qui una breve descrizione del tuo sito o progetto.</p>
+            </div>
+
+            <!-- Colonna 2: Link utili -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold">Link utili</h5>
+                <p><a href="#" class="text-white text-decoration-none">Home</a></p>
+                <p><a href="#" class="text-white text-decoration-none">Contatti</a></p>
+                <p><a href="#" class="text-white text-decoration-none">Privacy Policy</a></p>
+                <p><a href="#" class="text-white text-decoration-none">Termini</a></p>
+            </div>
+
+            <!-- Colonna 3: Social -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold">Seguici</h5>
+                <a href="#" class="text-white me-4"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-white me-4"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-white me-4"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+            </div>
+
+            </div>
+
+            <hr class="my-4 text-white">
+
+            <!-- Copyright -->
+            <div class="row">
+            <div class="col-md-12 text-center">
+                <p class="mb-0">&copy; 2025 Il Tuo Sito. Tutti i diritti riservati.</p>
+            </div>
+            </div>
+        </div>
+        </footer>
+        <!-- footer -->
+    </main>
+{% endblock %}
+

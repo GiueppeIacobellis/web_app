@@ -1,0 +1,496 @@
+{% extends "base_cards.html" %}
+{% block title %}
+    FESTIVAL DELLA MUSICA
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" 
+    href="{{url_for('static',filename = 'utente.css')}}">
+    <link rel="stylesheet" 
+    href="{{url_for('static',filename = 'biglietti.css')}}">
+    <link rel="stylesheet" 
+    href="{{url_for('static',filename = 'base_cards.css')}}">
+{% endblock %}
+
+{% block content %}
+    <main id="box-main">
+        {% if current_user.ruolo == 0 %}
+        <!--carta utente-->
+        <section id = "cards-grid">
+        <!-- card utente-->
+            <section>
+                <div class ="carta-utente">
+                    <div>
+                        <div class="row g">
+                        <div  id = "header-carta-utente" class="gradient-custom text-center text-white">
+                            <img  id ="logo-carta-utente"src="{{url_for('static', filename = '/images/logo1.png')}}"
+                            alt="logo" class="img my-5" style="width: 80px;" />
+                            <h5>{{current_user.nome}} {{current_user.cognome}}</h5>
+                            <p>Bentornato</p>
+                            <i class="far fa-edit mb-5"></i>
+                        </div>
+                        <div id="info-utente">
+                            <div class="card-body p-4">
+                            <h5>Informazioni</h5>
+                            <hr class="mt-0 mb-4">
+                            <div>
+                                <div>
+                                <h6>Email:</h6>
+                                <p class="text">{{ current_user.email }}</p>
+                                <hr>
+                                </div>
+
+                                <div>
+                                <h6>Crediti:</h6>
+                                <p class="text">{{ current_user.crediti }}</p>
+                                <hr>
+                                </div>
+                            </div>
+                            <h5>Ruolo:</h5>
+                            <hr class="mt-0 mb-4">
+                            <div>
+                                <div class="mb-3">
+                                <p>Partecipante</p>
+                                </div>
+                            </div>
+                            <div>
+                                <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+                                <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                                <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <!-- card utente -->
+
+        <!-- card biglietto -->
+            {% if p_errore == "NO" %}            
+                <section id= "biglietto-acquistato" class ="elemento-grid">
+                    <h3 style="font-weight: bolder !important;">
+                        il tuo biglietto acquistato:
+                    </h3>
+                    <hr id = "hr-carta-biglietto">
+                    <div id ="container-img" card="biglietto custom-card-bg">
+                        <img id="ticket" src="{{url_for('static', filename = 'images/tickets/'+ p_biglietto[3])}}" 
+                        class="card-img-top"  alt="img-biglietto">
+                        <div class="corpo" class="card-body">
+                            <h5 class="card-title">
+                                {{p_biglietto[4]}}
+                            </h5>
+                            <p class="card-text">
+                                {{ p_biglietto[1] }}
+                            </p>
+                        <div id = "giorno-inizio">
+                            <h5 class="card-title">
+                                Il tuo primo giorno di festival inizia:
+                            </h5>
+                            <button class="btn btn-primary">
+                                {{ p_nome_giorno }}
+                            </button>
+                    
+                        </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+
+            {% if p_errore == "errore" %}
+
+            {% endif %}
+        <!-- card biglietto -->
+        </section>
+        <!--carta utente-->
+        {% else %}
+
+        <!--carta utente-->
+        <section id = "cards-grid">
+        <!-- carta utente-->
+            <section class ="carta-utente">
+                <div class="row g-0">
+                    <div class="gradient-custom text-center text-white">
+                        <img  id ="logo-carta-utente"src="{{url_for('static', filename = '/images/logo1.png')}}"
+                        alt="logo" class="img my-5" style="width: 80px;" />
+                        <h5>{{current_user.nome}} {{current_user.cognome}}</h5>
+                        <p>Bentornato</p>
+                        <i class="far fa-edit mb-5"></i>
+                    </div>
+                    <div id="info-utente">
+                        <div class="card-body p-4">
+                            <h5>Informazioni</h5>
+                            <hr class="mt-0 mb-4">
+                            <div>
+                                <div>
+                                <h6>Email:</h6>
+                                <p class="text">{{ current_user.email }}</p>
+                                <hr>
+                                </div>
+
+                                <div>
+                                <h6>Crediti:</h6>
+                                <p class="text">{{ current_user.crediti }}</p>
+                                <hr>
+                                </div>
+                            </div>
+                            <h5>Vendite</h5>
+                            <hr class="mt-0 mb-4">
+                            <div>
+
+                                <div>
+                                <h6>INCASSI:</h6>
+                                <p class="text">{{p_incassi}}€</p>
+                                </div>
+                                
+                                <div>
+                                <h6>VENDUTI:</h6>
+                                {% for venduto in p_vendite %}
+                                    <p class="text">{{venduto[0]}}: {{venduto[1]}}</p>
+                                {% endfor %}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </section>
+
+        <!-- form -->
+            <div class ="grid-element,form">
+
+            <!-- form artista -->
+                <section id="form-artisti" >
+                    <h4> INSERISCI ARTISTA</h4>
+                    <hr>
+                    <div>
+                        <form class="modulo"action="/inserisci_artisti" method="post" enctype="multipart/form-data" id="form_grid">
+                            <div>
+                                <label for="nome"> Nome:</label>
+                            </div>
+                            <div>
+                                <input type="text" name="nome" id="nome" 
+                                placeholder="Artista/Gruppo" minlength="0" maxlength="30"
+                                required>
+                            </div>
+
+                            <div>
+                                <label for="foto" class="custom-file-label">Scegli una foto:</label>
+                            </div>
+                            <div>
+                                <input id="input-foto" type="file" accept=".png,.pdf,.jpg,.jpeg,.webp" 
+                                name="foto" id="foto" 
+                                required>
+                            </div>
+
+                            <div>
+                                <label for="descrizione">Descrizione Artista:</label>
+                            </div>
+                            <div>
+                                <textarea type="descrizione" name="descrizione" id="descrizione"
+                                placeholder="L'Artista"
+                                required>
+                                </textarea>
+                            </div>
+
+                            <div>
+                                <label for="embed">Embed:</label>
+                            </div>
+                            <div>
+                                <input type="embed" name="embed" id="embed"
+                                placeholder="link dell'embed di YT">
+                            </div>
+
+                            <div>
+                                <label for="genere">genere:</label>
+                            </div>
+                            <div>
+                                <select name="genere" id="genere">
+                                    {% for genere in p_generi %}
+                                        <option value="{{genere}}">{{genere}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <hr>
+                            <button type="submit" class="btn btn-lg btn-orange"> invia</button>
+                            <button type="reset" class="btn btn-lg btn-orange"> reset</button>
+                        </form>
+                    </div>
+                </section>
+            <!-- form artista -->
+
+            <!-- programmazione -->
+                <section id="form-programmazione" class="grid-element">
+                    <h4> PROGRAMMAZIONE</h4>
+                    <hr>
+                    <div>
+                        <form class="modulo"action="/programmazione" method="post" id="form_grid">
+                            <div>
+                                <label for="nome"> Nome Artista:</label>
+                            </div>
+                            <div>
+                                <select name="nome" id="nome">
+                                    {% for nome_artista in p_nomi_artisti %}
+                                        <option value="{{nome_artista[0]}}">
+                                            {{nome_artista[0]}}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="giorno" class="custom-file-label">Scegli una giorno:</label>
+                            </div>
+                            <div>
+                                <select name="giorno" id="giorno">
+                                    {% for nome_giorno in p_nomi_giorni %}
+                                        <option value="{{nome_giorno[0]}}">
+                                            {{nome_giorno[0]}}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="palco">Palco:</label>
+                            </div>
+                            <div>
+                                <select name="palco" id="palco">
+                                    {% for nome_palco in p_nomi_palchi %}
+                                        <option value="{{nome_palco[0]}}">
+                                            {{nome_palco[0]}}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="ora_inizio">ora inizio:</label>
+                            </div>
+                            <div>
+                                <select name="ora_inizio" id="ora_inizio">
+                                    {% for num in range (20,25) %}
+                                        <option value="{{num}}">{{num}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="genere">genere:</label>
+                            </div>
+                            <div>
+                                <select name="genere" id="genere">
+                                    {% for genere in p_generi %}
+                                        <option value="{{genere}}">{{genere}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="status">status:</label>
+                            </div>
+                            <div>
+                                <select name="status" id="status">
+                                    <option value="0" selected>Bozza</option>
+                                    <option value="1">Attiva</option>
+                                </select>
+                            </div>
+                            <hr>
+                            <button type="submit" class="btn btn-lg btn-orange"> invia</button>
+                            <button type="reset" class="btn btn-lg btn-orange"> reset</button>
+                        </form>
+                    </div>
+                </section>
+            <!-- programmazione -->
+
+            </div>
+        </section>
+        <!-- form -->
+
+
+        <!-- form filtri -->
+            <section id="form-filtri">
+                <h4> LE TUE BOZZE</h4>
+                <hr>
+                <div>
+                    <form class="modulo"action="/utente#risultati" method="post" id="form_grid">
+                        <div>
+                            <label for="genere">Genere:</label>
+                        </div>
+                        <div>
+                            <select name="genere" id="genere">
+                                <option value="tutti" selected>
+                                    Tutti
+                                </option>
+                                {% for genere in p_generi %}
+                                    <option value="{{genere}}">
+                                        {{genere}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="giorno" class="custom-file-label">Scegli una giorno:</label>
+                        </div>
+                        <div>
+                            <select name="giorno" id="giorno">
+                                <option value="tutti">
+                                    Tutti
+                                </option>
+                                {% for nome_giorno in p_nomi_giorni %}
+                                    <option value="{{nome_giorno[0]}}">
+                                        {{nome_giorno[0]}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="palco">Palco:</label>
+                        </div>
+                        <div>
+                            <select name="palco" id="palco">
+                                <option value="tutti">
+                                    Tutti
+                                </option>
+                                {% for nome_palco in p_nomi_palchi %}
+                                    <option value="{{nome_palco[0]}}">
+                                        {{nome_palco[0]}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <hr>
+                        <button type="submit" class="btn btn-lg btn-orange">applica</button>
+                        <button type="reset" class="btn btn-lg btn-orange">reset</button>
+                    </form>
+                </div>
+            </section>
+        <!-- form filtri -->
+        
+        <!-- bozze -->
+        <article id="bozze-grid">
+            {% for esibizione in p_esib %}
+                {% if esibizione[7] == 0  and current_user.id == esibizione[0] %}
+                    <div id = "risultati" class= "grid-element"  card="biglietto custom-card-bg">
+                        <img  src="{{url_for('static',filename = esibizione[2])}}" class=" img-artista card-img-top" 
+                        alt="img-artista">
+                        <div class="card-body corpo custom-scrollbar">
+
+                            <h5 class="card-title">
+                                {{esibizione[1]}}
+                            </h5>
+                            <hr class= "custom">
+
+                            <h6>
+                                SI ESIBIRÀ AL:
+                            </h6>
+                            <p class="desc_artista custom-scrollbar">
+                                {{esibizione[3]}}
+                            </p>
+                            <hr class= "custom">
+
+                            <h6>
+                                IL GIORNO:
+                            </h6>
+                            <p class="desc_artista custom-scrollbar">
+                                {{esibizione[4]}}
+                            </p>
+                            <hr class= "custom">
+
+                            <h6>
+                                ALLE ORE:
+                            </h6>
+                            <p class="desc_artista custom-scrollbar">
+                                {{esibizione[5]}}
+                            </p>
+                            <hr class= "custom">
+
+                            <h6>
+                                DURATA  :
+                            </h6>
+                            <p class="desc_artista custom-scrollbar">
+                                60 min 
+                            </p>
+                            <hr class= "custom">
+
+                            <h6>
+                                GENERE:
+                            </h6>
+                            <p class="desc_artista custom-scrollbar">
+                                {{esibizione[6]}}
+                            </p>
+                            <hr class= "custom">
+
+                            <!--user.ruolo == organizzatore,user_id == creatore dell'esibizione, status esibizione == bozza -->
+                            {% if current_user.ruolo == 1 and current_user.id == esibizione[0] and esibizione[7] == 0%}
+                                <div class="bottone">
+                                    <a href="{{url_for('modifica_bozza', id_bozza = esibizione[8] )}}" class="btn btn-danger">Modifica bozza</a>
+                                    {{esibizione[8]}}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+        
+            {% endfor %}
+        </article>
+        <!-- bozze -->
+         
+        {% endif %}
+
+
+         <!-- footer -->
+        <footer id="footer" class="bg-dark text-white pt-5 pb-4">
+        <div class="container text-md-left">
+            <div class="row text-md-left">
+
+            <!-- Colonna 1: Descrizione -->
+            <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold">Burning Man - Coordinate sintetiche</h5>
+                <p>
+                     DMS: 40°45'13.83" N, 119°16'37.20" W
+                </p>
+                <p>
+                    DD: 40.7864, −119.2770
+                </p>
+                <p>
+                    Queste coordinate ti portano al centro di Black Rock City, ovvero il punto focale del festival (dove si trova il famoso "Man").
+                </p>
+                
+            </div>
+
+            <!-- Colonna 2: Link utili -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold">Link utili</h5>
+                <p><a href="#" class="text-white text-decoration-none">Home</a></p>
+                <p><a href="#" class="text-white text-decoration-none">Contatti</a></p>
+                <p><a href="#" class="text-white text-decoration-none">Privacy Policy</a></p>
+                <p><a href="#" class="text-white text-decoration-none">Termini</a></p>
+            </div>
+
+            <!-- Colonna 3: Social -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold">Seguici</h5>
+                <a href="https://www.facebook.com/burningman/" class="text-white me-4"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/burningman/" class="text-white me-4"><i class="bi bi-instagram"></i></a>
+                <a href="https://x.com/burningman" class="text-white me-4"><i class="bi bi-twitter-x"></i></a>
+            </div>
+
+            </div>
+
+            <hr class="my-4 text-white">
+
+            <!-- Copyright -->
+            <div class="row">
+            <div class="col-md-12 text-center">
+                <p class="mb-0">&copy; Burning Man. Tutti i diritti riservati.</p>
+            </div>
+            </div>
+        </div>
+        </footer>
+        <!-- footer -->
+    </main>
+{% endblock %}

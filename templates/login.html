@@ -1,0 +1,46 @@
+{% extends "base_form.html" %}
+{% block title %}
+    login
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" 
+    href="{{url_for('static',filename = 'form.css')}}">
+{% endblock %}
+
+{% block content %}
+    <div id="login_box">
+        <form class="modulo"action="/autenticazione" method="post" id="form_grid">
+            <div>
+                <label for="email"> e-mail:</label>
+            </div>
+            <div>
+                <input type="email" name="email" id="email"
+                placeholder="esempio@mail.com">
+            </div>
+            
+            <div>
+                <label for="password">password:</label>
+            </div>
+            <div>
+                <input type="password" name="password" id="password"
+                placeholder="*************"
+                minlength="8" maxlength="20">
+            </div>
+        
+
+            <button type="submit" class="btn btn-lg btn-orange"> invia</button>
+            <button type="reset" class="btn btn-lg btn-orange"> reset</button>
+
+            <div id="iscrizione-link">
+                <p>
+                    non hai ancora un account?
+                    <a href="{{url_for('subscribe')}}">
+                         nessun probelma, iscriviti
+                    </a>
+                </p>
+            </div>
+            
+        </form>
+    </div>
+{% endblock %}

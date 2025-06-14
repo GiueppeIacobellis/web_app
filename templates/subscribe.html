@@ -1,0 +1,86 @@
+{% extends "base_form.html" %}
+
+{% block title %}
+    Subscribe
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" 
+    href="{{url_for('static',filename = 'form.css')}}">
+{% endblock %}
+    
+{% block content %}
+    <div id="login_box">
+        <form class="modulo"action="/register" method="post" enctype="multipart/form-data" id="form_grid">
+            <div>
+                <label for="nome"> Nome:</label>
+            </div>
+            <div>
+                <input type="text" name="nome" id="nome" 
+                placeholder="inserisci il tuo nome" 
+                minlength="0" maxlength="30"
+                required>
+            </div>
+
+            <div>
+                <label for="cognome"> cognome:</label>
+            </div>
+            <div>
+                <input type="text" name="cognome" id="cognome" 
+                placeholder="inserisci il tuo cognome" 
+                minlength="0" maxlength="30"
+                required>
+            </div>
+
+            <div>
+                <label for="email"> e-mail:</label>
+            </div>
+            <div>
+                <input type="email" name="email" id="email"
+                placeholder="esempio@mail.com"
+                required>
+            </div>
+
+            <div>
+                <label for="re_email">conferma e-mail:</label>
+            </div>
+            <div>
+                <input type="email" name="re_email" id="re_email"
+                placeholder="esempio@mail.com"
+                required>
+            </div>
+
+            <div>
+                <label for="password">password:</label>
+            </div>
+            <div>
+                <input type="password" name="password" id="password"
+                placeholder="*************"
+                minlength="0" maxlength="20"
+                required>
+            </div>
+
+            <div>
+                <label for="re_password">conferma password:</label>
+            </div>
+            <div>
+                <input type="password" name="re_password" id="re_password"
+                placeholder="*************"
+                minlength="0" maxlength="20"
+                required>
+            </div>
+
+            <div> 
+                <label for="ruolo">ruolo:</label>
+            </div>
+            <div>
+                <select name="ruolo" id="ruolo" required>
+                    <option value="client" selected>partecipante</option>
+                    <option value="organizer">organizzatore</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-lg btn-orange"> invia</button>
+            <button type="reset" class="btn btn-lg btn-orange"> reset</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "base_cards.html" %}
+
+{% block title %}
+    Palchi
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" 
+    href="{{url_for('static',filename = 'base_cards.css')}}">
+    <link rel="stylesheet" 
+    href="{{url_for('static',filename = 'palchi.css')}}">
+{% endblock %}
+
+{% block content %}
+    <main id="box-main">
+        <!-- cards -->
+        <section id= "cards-grid">
+            {% for palco in p_palchi %}
+            <div class="grid-element"card="palco custom-card-bg">
+                <img src="{{url_for('static', filename = 'images/stages/'+ palco[2] )}}" class="card-img-top" 
+                alt="img-palco {{palco[1]}}">
+                <div class="corpo" class="card-body">
+                    <h5 class="card-title">
+                        {{palco[1]}}
+                    </h5>
+                    <p class="card-text custom-scrollbar">
+                        {{palco[3]}}
+                    </p>
+                    <div class="bottone">
+                        <a href="#" class="btn btn-primary">{{palco[0]}}</a>
+                    </div>    
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+        <!-- cards -->
+
+
+         <!-- footer -->
+        <footer id="footer" class="bg-dark text-white pt-5 pb-4">
+        <div class="container text-md-left">
+            <div class="row text-md-left">
+
+            <!-- Colonna 1: Descrizione -->
+            <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold">Burning Man - Coordinate sintetiche</h5>
+                <p>
+                     DMS: 40°45'13.83" N, 119°16'37.20" W
+                </p>
+                <p>
+                    DD: 40.7864, −119.2770
+                </p>
+                <p>
+                    Queste coordinate ti portano al centro di Black Rock City, ovvero il punto focale del festival (dove si trova il famoso "Man").
+                </p>
+                
+            </div>
+
+            <!-- Colonna 2: Link utili -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold">Link utili</h5>
+                <p><a href="#" class="text-white text-decoration-none">Home</a></p>
+                <p><a href="#" class="text-white text-decoration-none">Contatti</a></p>
+                <p><a href="#" class="text-white text-decoration-none">Privacy Policy</a></p>
+                <p><a href="#" class="text-white text-decoration-none">Termini</a></p>
+            </div>
+
+            <!-- Colonna 3: Social -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 font-weight-bold">Seguici</h5>
+                <a href="https://www.facebook.com/burningman/" class="text-white me-4"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/burningman/" class="text-white me-4"><i class="bi bi-instagram"></i></a>
+                <a href="https://x.com/burningman" class="text-white me-4"><i class="bi bi-twitter-x"></i></a>
+            </div>
+
+            </div>
+
+            <hr class="my-4 text-white">
+
+            <!-- Copyright -->
+            <div class="row">
+            <div class="col-md-12 text-center">
+                <p class="mb-0">&copy; Burning Man. Tutti i diritti riservati.</p>
+            </div>
+            </div>
+        </div>
+        </footer>
+        <!-- footer -->
+    </main>
+{% endblock %}
+
+<!-- da completare prima degli altri-->

@@ -1,0 +1,19 @@
+{% extends "base.html" %}ù
+
+{% block title %}
+    errore
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" 
+    href="{{url_for('static',filename = 'base.css')}}">
+{% endblock %}
+
+{% block content %}
+    <div id = "errore">
+        <h2>
+            {{messaggio}}
+        <hr>    
+        </h2>
+    </div>
+{% endblock %}
